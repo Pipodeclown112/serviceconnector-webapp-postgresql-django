@@ -4,3 +4,4 @@ pytz==2018.5
 whitenoise==4.1
 requests==2.24.0
 psycopg2==2.9.7
+django_tables2==2.6.0
