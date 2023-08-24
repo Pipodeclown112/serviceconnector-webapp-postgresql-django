@@ -1,7 +1,9 @@
 from django.contrib import admin
+from .models import Cat, SubCat, WorkHour
 
 # Register your models here.
-from .models import Employee, Project
 
-admin.site.register(Employee)
-admin.site.register(Project)
+
+admin.site.register(WorkHour)
+admin.site.register(Cat)
+admin.site.register(SubCat)

@@ -1,10 +1,12 @@
 from django.urls import path
 
 from . import views
-from timesheet.views import EmployeesView
 
 app_name='timesheet'
 urlpatterns = [
-    path("", views.index, name="index"),
-    path("employees", EmployeesView.as_view(), name="employees")
+    path('<str:user>/', views.index, name='index'),
+    path('<str:user>/results/', views.process_entry, name='results'),
+    path('<str:user>/code/', views.add_code, name='codes'),
+    path('<str:user>/tasks/', views.task_viewer, name='tasks'),
+    path('<str:user>/chart/', views.chart_data, name='chart'),
 ]

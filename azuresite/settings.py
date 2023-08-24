@@ -31,8 +31,8 @@ ALLOWED_HOSTS = [ '*' ]
 # Application definition
 
 INSTALLED_APPS = [
+    'login.apps.LoginConfig',
     'timesheet.apps.TimesheetConfig',
-    'django_tables2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'azuresite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "timesheet_test",
+        'NAME': "timesheet",
         "USER": "Pipodeclown112",
         "PASSWORD": "Qx&pJ@4iza93",
         "HOST": "postgres-sql-timesheet.postgres.database.azure.com",

@@ -1,25 +1,37 @@
 from django.db import models
 
-# Create your models here.
-class Employee(models.Model):
-    first_name = models.CharField(max_length=50, default="")
-    last_name = models.CharField(max_length=50, default="")
-    base_salary = models.IntegerField(default=0)
-    fte_percentage = models.DecimalField(max_digits=3, decimal_places=2, default=1)
-    # NO_WORKING_DAYS = 52*5
-    # day_rate = models.IntegerField(default=base_salary / (NO_WORKING_DAYS * fte_percentage))
+
+class Cat(models.Model):
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
-   
-class Project(models.Model):
-    name = models.CharField(max_length=50, default="")
-    time_allocated = models.IntegerField()
-    budget_allocated = models.IntegerField()
+        return str(self.Category)
 
-    working_on = models.ManyToManyField(Employee)
+    Category = models.CharField(max_length=50)
+
+
+class SubCat(models.Model):
 
     def __str__(self):
-        return self.name
-    
+        return str(self.Parent_Category) + "-" + str(self.SubCategory)
+
+    SubCategory = models.CharField(max_length=50)
+    Parent_Category = models.ForeignKey(Cat, on_delete=models.CASCADE)
+
+
+class WorkHour(models.Model):
+
+    def __str__(self):
+        return str(self.Employee) + ": " + str(self.Task_Category)
+
+    Employee = models.ForeignKey('login.Employee', on_delete=models.CASCADE)
+    Date_Worked = models.DateField()
+    Task_Category = models.ForeignKey(SubCat, on_delete=models.CASCADE)
+    Hours = models.SmallIntegerField(default=0)
+    Minutes = models.IntegerField(default=0)
+    Work_Description = models.CharField(max_length=200)
+    Rework = models.BooleanField()
+    Billable = models.BooleanField()
+
+
+
 
